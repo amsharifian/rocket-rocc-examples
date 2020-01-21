@@ -1,4 +1,4 @@
-AC_INIT([rocket-rocc-examples], [0.1], [schuyler.eldridge@gmail.com])
+AC_INIT([rocket-rocc-examples], [0.1], [am.sharifian@gmail.com])
 
 cross_compiling=yes
 AC_PROG_CC

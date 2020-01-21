@@ -1,5 +1,29 @@
 Collection of example libraries and test programs for the existing Rocket Custom Coprocessor (RoCC) accelerators for [Rocket Chip](https://github.com/ucb-bar/rocket-chip).
 
+
+## Getting Started on a Local Ubuntu Machine
+
+1. Install Ubuntu packages
+    sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
+
+2. Clone and build `riscv-gnu-toolchain`
+    git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
+    cd riscv-gnu-toolchain
+    git submodule update --init --recursive
+    ./configure --prefix=/opt/riscv
+    sudo make -j8
+    export PATH=/opt/riscv/bin:$PATH
+    export LD_LIBRARY_PATH=/opt/riscv/lib:$LD_LIBRARY_PATH
+
+To build the Newlib cross-compiler, pick an install path. If you choose, say, /opt/riscv, then add /opt/riscv/bin to your PATH now. Then, simply run the following command:
+
+3. Clone and build `riscv-tools`
+    git clone --recursive https://github.com/riscv/riscv-tools.git
+    cd riscv-tools
+    export RISCV=/path/to/install/riscv/toolchain
+    ./build.sh
+
+
 ## Usage
 
 Install the RISC-V toolchain and make sure that it's on your path.
