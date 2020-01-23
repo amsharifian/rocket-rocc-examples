@@ -5,58 +5,59 @@ Collection of example libraries and test programs for the existing Rocket Custom
 
 1. Install Ubuntu packages
 
-    sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
+        sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
 
 2. Clone and build `riscv-gnu-toolchain`
 
-    git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
-    cd riscv-gnu-toolchain
-    git submodule update --init --recursive
-    ./configure --prefix=/opt/riscv
-    sudo make -j8
-    export PATH=/opt/riscv/bin:$PATH
-    export LD_LIBRARY_PATH=/opt/riscv/lib:$LD_LIBRARY_PATH
+        git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
+        cd riscv-gnu-toolchain
+        git submodule update --init --recursive
+        ./configure --prefix=/opt/riscv
+        sudo make -j8
+        export PATH=/opt/riscv/bin:$PATH
+        export LD_LIBRARY_PATH=/opt/riscv/lib:$LD_LIBRARY_PATH
 
 To build the Newlib cross-compiler, pick an install path. If you choose, say, /opt/riscv, then add /opt/riscv/bin to your PATH now. Then, simply run the following command:
 
 3. Clone and build `riscv-tools`
 
-    git clone --recursive https://github.com/riscv/riscv-tools.git
-    cd riscv-tools
-    export RISCV=/path/to/install/riscv/toolchain
-    ./build.sh
+        git clone --recursive https://github.com/riscv/riscv-tools.git
+        cd riscv-tools
+        export RISCV=/path/to/install/riscv/toolchain
+        ./build.sh
 
 4. Clone Rocket-chip repo
 
-    git clone --recursive https://github.com/chipsalliance/rocket-chip.git
-    cd rocket-chip
-    git submodule update --init
-    export RISCV=/path/to/riscv/toolchain/installation
-    export MAKEFLAGS="$MAKEFLAGS -jN" # Assuming you have N cores on your host system
-    ./build.sh
+        git clone --recursive https://github.com/chipsalliance/rocket-chip.git
+        cd rocket-chip
+        git submodule update --init
+        export RISCV=/path/to/riscv/toolchain/installation
+        export MAKEFLAGS="$MAKEFLAGS -jN" # Assuming you have N cores on your host system
+        ./build.sh
 
 5. Build emulation binary
 
-    cd rocket-chip
-    cd emulator
-    make CONFIG=RoccExampleConfig
+        cd rocket-chip
+        cd emulator
+        make CONFIG=RoccExampleConfig
 
 At this point you should have rocket-chip emulator: `emulator-freechips.rocketchip.system-RoccExampleConfig`
 
 
 6. To run the bareMetal example:
 
-    git clone --recursive git@github.com:amsharifian/riscv-tests.git
-    cd riscv-tests
-    git submodule update --init --recursive
-    autoconf
-    ./configure --prefix=$RISCV/target
-    make
-    make install
+        git clone --recursive git@github.com:amsharifian/riscv-tests.git
+        cd riscv-tests
+        git submodule update --init --recursive
+        autoconf
+        ./configure --prefix=$RISCV/target
+        make
+        make install
 
 7. To run Baremetal test
-    cd rocket-chip/emulator
-    ./emulator-freechips.rocketchip.system-RoccExampleConfig ~/git/riscv-tests/benchmarks/rocc.riscv
+
+        cd rocket-chip/emulator
+        ./emulator-freechips.rocketchip.system-RoccExampleConfig ~/git/riscv-tests/benchmarks/rocc.riscv
 
 You should expect the following output
 
