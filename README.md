@@ -4,9 +4,11 @@ Collection of example libraries and test programs for the existing Rocket Custom
 ## Getting Started on a Local Ubuntu Machine
 
 1. Install Ubuntu packages
+
     sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
 
 2. Clone and build `riscv-gnu-toolchain`
+
     git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
     cd riscv-gnu-toolchain
     git submodule update --init --recursive
@@ -18,12 +20,14 @@ Collection of example libraries and test programs for the existing Rocket Custom
 To build the Newlib cross-compiler, pick an install path. If you choose, say, /opt/riscv, then add /opt/riscv/bin to your PATH now. Then, simply run the following command:
 
 3. Clone and build `riscv-tools`
+
     git clone --recursive https://github.com/riscv/riscv-tools.git
     cd riscv-tools
     export RISCV=/path/to/install/riscv/toolchain
     ./build.sh
 
 4. Clone Rocket-chip repo
+
     git clone --recursive https://github.com/chipsalliance/rocket-chip.git
     cd rocket-chip
     git submodule update --init
@@ -32,6 +36,7 @@ To build the Newlib cross-compiler, pick an install path. If you choose, say, /o
     ./build.sh
 
 5. Build emulation binary
+
     cd rocket-chip
     cd emulator
     make CONFIG=RoccExampleConfig
@@ -40,6 +45,7 @@ At this point you should have rocket-chip emulator: `emulator-freechips.rocketch
 
 
 6. To run the bareMetal example:
+
     git clone --recursive git@github.com:amsharifian/riscv-tests.git
     cd riscv-tests
     git submodule update --init --recursive
